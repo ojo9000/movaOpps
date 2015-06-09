@@ -1,0 +1,36 @@
+INPUT.required {
+	
+}
+TEXTAREA.required {
+	
+}
+SELECT.validation-failed {
+	BORDER-BOTTOM: #ff3300 1px solid; BORDER-LEFT: #ff3300 1px solid; COLOR: #ff3300; BORDER-TOP: #ff3300 1px solid; BORDER-RIGHT: #ff3300 1px solid
+}
+INPUT.validation-failed {
+	BORDER-BOTTOM: #ff3300 1px solid; BORDER-LEFT: #ff3300 1px solid; COLOR: #ff3300; BORDER-TOP: #ff3300 1px solid; BORDER-RIGHT: #ff3300 1px solid
+}
+TEXTAREA.validation-failed {
+	BORDER-BOTTOM: #ff3300 1px solid; BORDER-LEFT: #ff3300 1px solid; COLOR: #ff3300; BORDER-TOP: #ff3300 1px solid; BORDER-RIGHT: #ff3300 1px solid
+}
+* HTML SELECT.validation-failed {
+	BACKGROUND-COLOR: #e8cdb9
+}
+SELECT.validation-passed {
+	
+}
+INPUT.validation-passed {
+	
+}
+TEXTAREA.validation-passed {
+	
+}
+.validation-advice {
+	PADDING-BOTTOM: 0px; MARGIN: 0px 0px 0px 10px; PADDING-LEFT: 0px; PADDING-RIGHT: 0px; COLOR: #ff3300; FONT-WEIGHT: bold; PADDING-TOP: 0px
+}
+.custom-advice1 {
+	PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #dff3fb; MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #ff3300; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}
+.custom-advice2 {
+	PADDING-BOTTOM: 5px; BACKGROUND-COLOR: #ff3300; MARGIN: 5px 0px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; COLOR: #fff; FONT-WEIGHT: bold; PADDING-TOP: 5px
+}

@@ -1,0 +1,96 @@
+字段属性
+Dim ObjectFieldArray(100,30)	
+				ObjectFieldArray(i,1)=FRM_field_code			'字段名
+				ObjectFieldArray(i,2)=FRM_field_name			'字段名称
+				ObjectFieldArray(i,3)=FRM_field_type			'字段类型
+				ObjectFieldArray(i,4)=FRM_is_required			'字段是否必填
+				ObjectFieldArray(i,5)=FRM_search_type			'字段查询条件类型
+				ObjectFieldArray(i,6)=FRM_def_value				'字段默认值
+				ObjectFieldArray(i,7)=FRM_col_span				'字段布局跨列数
+				ObjectFieldArray(i,8)=FRM_width						'字段输入框宽度
+				ObjectFieldArray(i,9)=FRM_high						'字段输入框高度
+				ObjectFieldArray(i,10)=FRM_allow_recall		'字段记忆
+				
+				ObjectFieldArray(i,11)=FRM_clone_by				'字段克隆标记
+				ObjectFieldArray(i,12)=FRM_allow_clone		'字段是否允许克隆
+				ObjectFieldArray(i,13)=FRM_is_num					'字段是否为数字
+				ObjectFieldArray(i,14)=FRM_new_read_only	'字段新建时只读
+				ObjectFieldArray(i,15)=FRM_edit_read_only	'字段编辑时只读
+				ObjectFieldArray(i,16)=FRM_new_onChange		'字段新建时onChange事件	
+				ObjectFieldArray(i,17)=FRM_edit_onChange	'字段编辑时onChange事件
+				ObjectFieldArray(i,18)=FRM_status_rule		'字段规则字符串 ，处理状态的				
+ 				ObjectFieldArray(i,19)=FRM_is_richText		'是否是富文本
+				ObjectFieldArray(i,20)=FRM_is_attachment	'是否是附件
+				ObjectFieldArray(i,21)=FRM_hidden_by			'对列表的角色隐藏显示
+				ObjectFieldArray(i,22)=FRM_new_ext_html		'字段新建时html扩展 
+				ObjectFieldArray(i,23)=FRM_edit_ext_html	'字段编辑时html扩展 
+
+curIndex_Property_readOnly = 21		'只读属性的序号，需要根据实际情况修改
+curIndex_Property_value = curIndex_Property_readOnly+1			'当前属性的值索引
+
+
+'自定义字段数组
+Dim ObjectFieldArray(100,30)		
+Dim ObjectFieldArray_X,ObjectFieldArray_Y  '定义字段的数量_X及属性_Y的数量， 
+
+'自定义主表的字段数组
+Dim mastTableFieldArray(30,4)
+Dim mastTableFieldArray_X,mastTableFieldArray_Y
+mastTableFieldArray_X=30-1
+mastTableFieldArray_Y=4-1
+
+
+mastTableFieldArray(i,1)=rs("field_code")			' 字段名
+mastTableFieldArray(i,2)=rs("field_Name")			'字段名称
+mastTableFieldArray(i,3)=rs("field_Name")			'值
+
+################HEML展示的
+隐藏字段的html输出
+<input type="hidden" id="__customer" name="_HTML__customer"  title="_HTML__姓名"  value="于东军">
+<div id="_HTML__customer">于东军</div></td> 
+
+显示的字段
+<input class=cn_input03 id="_VO" type="text" size="20" name="_VO" value="威海">
+
+如果是主表，那么变量为：_HTML__VK
+LABLE2JS
+
+
+
+DATEDIFF ( Day , cast( '2012-02-1' as datetime) , GETDATE()  )  　　
+datediff(Day,cast(参数),getDate())
+
+时间比较
+
+getObjectProperty(objectid,propertyValue)
+
+
+
+
+^()->已确认(确认)|
+新建()->已确认(确认)|
+已确认()-->未收资料(未收资料),资料不齐(资料不齐),办理中(办理)|
+未收资料()->资料不齐(资料不齐),办理中(办理)|
+资料不齐()->办理中(办理)|
+办理中()->办理成功(办理成功),办理失败(办理失败)|
+办理失败()->已退款(退款确认)|
+
+办理失败->.()
+
+
+
+新建(*)->已确认(确认)|
+已确认()-->未收资料(未收资料),资料不齐(资料不齐),办理中(办理)|
+未收资料()->资料不齐(资料不齐),办理中(办理)|
+资料不齐()->办理中(办理)|
+办理中()->办理成功(办理成功),办理失败(办理失败)|
+办理失败()->已退款(退款确认)|
+办理成功()->.()|
+已退款()-.()
+
+ 
+^()->已确认(确认)|
+新建()->已确认(确认)|
+已确认()-->未收资料(未收资料),资料不齐(资料不齐),办理中(办理)|
+办理失败()->已退款(退款确认)|
+已退款->.()

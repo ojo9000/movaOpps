@@ -1,0 +1,19 @@
+
+		
+			getCtrolSplitValue dyParamValue,ObjectFieldArray(k,1)
+	if trim(FRM_template_field) <> "" then 
+		 dyParamValue = req("dyParam")
+		 getCtrolSplitValue dyParamValue,FRM_template_field 
+		 
+		 getCtrolSplitValue  FRM_template_define,CtrolReturnValue
+		 response.write CtrolReturnValue & "|" & CtrolReturnValueExt
+	end if 
+	
+	
+	
+	FRM_mark_fieldValue =""
+	if trim(FRM_template_field) <> "" then 
+		 getCtrolSplitValue  FRM_template_define,movaRS(FRM_template_field)
+		 response.write CtrolReturnValue & "|" & CtrolReturnValueExt
+	end if 
+	

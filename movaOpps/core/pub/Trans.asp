@@ -1,0 +1,3 @@
+<%
+	allowTrans = true
+%>

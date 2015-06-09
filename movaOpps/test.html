@@ -1,0 +1,12 @@
+<script>
+	function dialogPick(url,title){
+		$('#info_dailog').attr("title",title);
+		$('#info_dailog').html("<iframe width='100%' height='100%' frameborder='0' id='Preview' src='"+url+"'/>");
+		$('#info_dailog').dialog('open');
+	}
+	function setDialogField(returnID,returnIDKey,returnValue,returnValueKey){
+		$('#info_dailog').dialog( "close" );
+		$("#"+returnIDKey).val(returnID);
+		$("#"+returnValueKey).val(returnValue);
+	}
+</script>
