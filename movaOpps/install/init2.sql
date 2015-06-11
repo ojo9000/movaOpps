@@ -6,3 +6,6 @@ UPDATE mova_serialno SET pre_fix='M',seed='100' WHERE OBJECT_NAME='Plugin'
 GO
 insert into mova_roleFunction ( mova_roleid,mova_functionid) select 1,mova_functionid from mova_function
 GO
+UPDATE [mu_object_field] SET multiple_size='0',allow_suggestion='F'  
+GO
+ 

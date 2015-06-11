@@ -829,7 +829,10 @@ CREATE TABLE [dbo].[mu_object_field] (
 	[plugin_no] [varchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,
 	[fk_select] [varchar](300) NULL,
 	[fk_window] [varchar](300) NULL,
-	[hidden_by_field] [varchar](200) NULL
+	[hidden_by_field] [varchar](200) NULL,
+	[multiple_size] [int] NULL default 0,
+	[allow_suggestion] [char](1) NULL default('F')
+	
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 

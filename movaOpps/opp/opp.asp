@@ -876,65 +876,7 @@ Dim i
  	 <%end if%>
  	   <%
  	  '########################个性化按钮!!
- 	  if FRM_objectId=1   then '是模拟验房 和新增任务时的特殊处理
- 	  		IF getOppProperty("MU_CUSTOMER",FRM_opp_id,"D2")&""=cStr(session("userid"))&""  AND getOppProperty("MU_CUSTOMER",FRM_opp_id,"V1")="已发送" then 
- 	  			response.write "<BUTTON class=cn_button01 type=submit  onClick='acceptJob(1)'>接受</button>" 
- 	  			response.write "<BUTTON class=cn_button01 type=submit  onClick='acceptJob(0)'>不接受</button>" 
- 	  		end if 
- 		end if 
- 		
- 		if FRM_objectId=21  and not isNew  then '是任务时的特殊处理
- 			%>
- 			 <% if not session("locked") then %> <BUTTON class=cn_button01 type=button  onClick="sendEmail($('#_D2').val(),this.form.no.value)">发送邮件</button> 
- 	  			 <BUTTON class=cn_button01 type=button  onClick='sendPrint()'>派单打印</button> 
- 	  			  <iframe name="print" id="print" src="#" width=0 height=0 frameborder=0></iframe>
- 	  			 <%end if %>
- 	  	<%
- 			if session("isSLR")   then 
- 			%> 
- 	  			
- 	  			 <BUTTON class=cn_button01 type=submit  onClick="this.form.add_continue.value='T'">同客户继续新增任务</button> 
- 	  	<%end if %>
- 	  	<%if (session("isSLR") or session("isZRR")) and  not session("locked")  then %>
- 	  	<BUTTON class=cn_button01 type=button  onClick="dialogPick('/movaOpps/core/pub/dailog/listUser.asp?pickId=_D2&pickValue=_SHOW_D2&submit=true','选择移交人')">任务移交</button>
- 	  	<%END IF %>
- 	  	
- 	  			<script>
- 	  			function sendEmail(userid,no){
-						if (userid!="0"){
-							if (confirm("发送邮件，确定吗？")){
-	 	  					htmlobj=$.ajax({url:"/movaopps/userDefine/sendMail.asp?user="+ userid +"&no=" + no,async:false});
-	 	  					alert(htmlobj.responseText); 
-							}
-						}else{
-							alert("请选择责任人。");
-						}
-						
-   				}
-   				
-   				function sendPrint(){
-   					
-   					if ($('#_VJ').val()==""||$('#_VO').val()==""){
-   						alert("承建商和处理方必须输入才能进行派单打印");
-   					}else{
-   						if (confirm("确定打印？")){
- 	  						$("#print").attr("src", "/movaopps/userDefine/sendPrint.asp?no=<%=FRM_object_no%>"); 
- 	  						//window.open("/movaopps/userDefine/sendPrint.asp?no=<%=FRM_object_no%>");
- 	  					}
-   					}
-   					
-   					
- 	  				
- 	  				   
-   				}
-   
-   				</script>
-  
- 	  			
- 	  			<%
- 		end if 
- 	  
- 	  
+ 	    
  	  %>
  	 <%
  	 	if FRM_opp_id="-1"  and FRM_add_continue="T" and chkAccount(getObjectOppSec(FRM_objectId,"DY_EDIT") ) then 

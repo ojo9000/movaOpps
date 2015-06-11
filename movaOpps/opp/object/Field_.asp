@@ -20,6 +20,7 @@
 'Get Get Param:
 Dim  FLD_field_id,FLD_object_id,FLD_field_code, FLD_field_name,FLD_field_type,FLD_is_new,FLD_is_list,FLD_is_edit,FLD_is_seat,FLD_is_search,FLD_is_required,FLD_search_type,FLD_def_value,FLD_col_span,FLD_sort_edit,FLD_sort_list,FLD_width,FLD_high,FLD_allow_batch,FLD_allow_recall,FLD_new_onChange,FLD_edit_onChange,FLD_edit_ext_html,FLD_new_ext_html,FLD_new_read_only,FLD_edit_read_only,FLD_is_forbidden,FLD_status_rule,FLD_status_rule_bk,FLD_is_richText,FLD_is_attachment,FLD_hidden_by,FLD_clone_by,FLD_allow_clone,FLD_del,FLD_old_field_type
 Dim FLD_FK_select,FLD_FK_window,FLD_hidden_by_field
+Dim FLD_multiple_size,FLD_allow_suggestion  
 
 FLD_field_id=getParamID(req("field_id"))
 
@@ -44,6 +45,10 @@ FLD_allow_batch= req("allow_batch")
 FLD_allow_recall= req("allow_recall")
 FLD_new_onChange = decode_HTML2SQL(req("new_onchange"))
 FLD_edit_onChange = decode_HTML2SQL(req("edit_onchange"))
+FLD_multiple_size =  req("multiple_size")
+FLD_allow_suggestion =  req("allow_suggestion")
+
+
 
 
 FLD_edit_ext_html = decode_HTML2SQL(req("edit_ext_html"))
@@ -135,6 +140,13 @@ if allowUpdate then
 				movaRS("fk_select")=FLD_FK_select
 				movaRS("fk_window")=FLD_FK_window
 				movaRS("hidden_by_field") = FLD_hidden_by_field
+				
+				movaRS("multiple_size") = FLD_multiple_size 
+				movaRS("allow_suggestion") = FLD_allow_suggestion
+
+
+
+
 				
 				movaRS("archive") = FLD_del
 				movaRS("modifyDate") = Now

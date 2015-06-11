@@ -120,6 +120,9 @@ end if
 				FRM_FK_select = movaRS("fk_select")
 				FRM_FK_window = movaRS("fk_window")
 				FRM_hidden_by_field= movaRS("hidden_by_field")
+				FRM_multiple_size = movaRS("multiple_size")
+				FRM_allow_suggestion = movaRS("allow_suggestion")
+	
 				
 %>
 <script>
@@ -309,6 +312,23 @@ end if
   	  				</select>
 	  		</td>
 	  </tr>
+	   
+	
+	
+	  <tr><td class=cn_td09 align=right>下拉允许多选:</td>
+	  		<td><select name="multiple_size"> 
+  	  					<%=cachePicklist("#shuzi",FRM_multiple_size)%>
+  	  				</select>选择0表示不支持多选，选择其他数字则表示支持多选，且下拉框的高度为选定值的高度
+	  		</td>
+	  </tr>
+	   <tr><td class=cn_td09 align=right>输入是否允许联想:</td>
+	  		<td><select name="allow_suggestion"> 
+  	  					<%=cachePicklist("#isNo",FRM_allow_suggestion)%>
+  	  				</select>仅对选择输入项有效
+	  		</td>
+	  </tr>
+	  
+	  
 	  		<tr><td class=cn_td09 align=right>状态规则:</td>
 	  		<td>当该字段为状态字段时，设定规则，使得系统可以根据字段值来确定相应的状态处理操作。请不要输入回车符号  
 	  			<br>一个模型只能设定一个字段作为状态规则，最多允许10个状态。
