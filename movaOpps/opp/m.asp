@@ -155,7 +155,7 @@ OutListString = OutListString & "		  	<tr> "
 OutListString = OutListString & "				<td>"
 OutListString = OutListString & "							<select name="& chr(34)  & FRM_field_code & chr(34) & ">"
 OutListString = OutListString & "								<option value="& chr(34)& chr(34) & " ></option>"
-OutListString = OutListString & "								"& chr(34)  &getItemList(ObjectFieldArray(itemK,3),"") 
+OutListString = OutListString & "								"& chr(34)  &getItemList(ObjectFieldArray(itemK,3),ObjectFieldArray(itemK,29),"") 
 OutListString = OutListString & "							</select></td>" 					
 		 
 			else 

@@ -182,7 +182,7 @@ for k=1 to ObjectFieldArray_X
 			%>
 							<select name="<%=FormName%>">
 								<option value=""></option>
-								<%=getItemList(ObjectFieldArray(k,3),curValue)%>
+								<%=getItemList(ObjectFieldArray(k,3),ObjectFieldArray(k,29),curValue)%>
 							</select>
 			<%
 		else
@@ -439,7 +439,7 @@ Next
   	<TR>
   		<% if FRM_allow_batch="T" and chkAccount(getObjectOppSec(session("F_objectId"),"DY_BATCH"))  then  response.write "<TH><input type='checkbox' name='selAll' onClick='selectAll(this.form)' title='选择所有的'></th>" %>
   		<% if session("roleScope")="G" then %>
-  			<th>公司</th>
+  			<th>组</th>
   		<% end if %>
   		<tH><%=FRM_object_name%>编号</tH>
   		<% if FRM_is_single ="F"  then %><tH>标题</tH><%end if %>

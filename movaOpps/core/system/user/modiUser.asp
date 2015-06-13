@@ -151,7 +151,7 @@ FRM_qq = movaRS("qq")
                           </tr>
                            <% if isAdministrator() then %>
                           <tr height="20">
-                            <td  class="cn_td09" ><font color=red>*</font>默认公司:</td>
+                            <td  class="cn_td09" ><font color=red>*</font>默认组:</td>
                             <td class="" >
                             <select name="team_id" >
                              <option value=""></option>

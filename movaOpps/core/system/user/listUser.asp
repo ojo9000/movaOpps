@@ -62,7 +62,7 @@ Dim team_name,appVar,z,itemArray,opp_type,picklistArray,param1,status
                             <th class="formlistTitle" >角色</th>
                             <th class="formlistTitle" >电话</th>
                             <th class="formlistTitle" >邮件</th>
-                            <th class="formlistTitle" >公司</th>
+                            <th class="formlistTitle" >组</th>
                             <th class="formlistTitle" >业务类型 </th>
                             <th class="formlistTitle" >属性1</th>
                             <th class="formlistTitle" >状态</th>

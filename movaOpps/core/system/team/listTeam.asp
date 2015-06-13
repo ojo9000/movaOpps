@@ -11,8 +11,8 @@
 	Dim team_name,status,team_id
 %>
 <%opendatabase%>
-<div class="cn_list_title">公司管理</div> 
-<div class="cn_list_title_right"><a href="addTeam.asp">添加公司</a> | <a href="listTeam.asp">公司列表</a></div>
+<div class="cn_list_title">组管理</div> 
+<div class="cn_list_title_right"><a href="addTeam.asp">添加组</a> | <a href="listTeam.asp">组列表</a></div>
 
 <DIV class=cn_col01>
 <table width="100%" border="0" cellspacing="1" cellpadding="1">
@@ -30,7 +30,7 @@
 	if movaRs.eof or movaRs.bof then
 		%>
 													<tr height="20"> 
-                            <td colspan=4>没有公司，<a href="addTeam.asp">添加公司</a></td>
+                            <td colspan=4>没有组，<a href="addTeam.asp">添加组</a></td>
                           </tr>
 		<%
 	else

@@ -67,7 +67,7 @@ msgbox "记录不存在，或者您打开了一个错误的页面",1
 end if 
 
 	Dim recordType 
-	recordType  = "select selectvalue,'&nbsp;' + txt as txt  from mova_picklist where code='record_type' and archive='F' union select item_code as selectvalue,'*' + item_name as txt from mu_item where archive='F'  and owner='" & session("customerNo") & "'"
+	recordType  = " select selectvalue,'&nbsp;' + txt as txt  from mova_picklist where code='record_type' and archive='F' union  select item_code as selectvalue,'*' + item_name as txt from mu_item where archive='F'  and owner='" & session("customerNo") & "'"
 	
 	Dim customerField
 	customerField = "select upper('~' + field_code )  as selectvalue,field_name+'~'+field_code as txt  from mu_object o ,mu_object_field f where o.object_id=f.object_id "
@@ -79,7 +79,7 @@ end if
  	Dim FRM_field_id,FRM_object_id,FRM_field_code,FRM_field_name,FRM_field_type,FRM_is_new,FRM_is_list,FRM_is_edit,FRM_is_seat,FRM_is_search,FRM_is_required,FRM_search_type,FRM_def_value,FRM_col_span,FRM_sort_edit,FRM_sort_list,FRM_width,FRM_high,FRM_is_rule,FRM_allow_batch,FRM_allow_recall,FRM_clone_by,FRM_allow_clone,FRM_new_onChange,FRM_edit_onChange,FRM_edit_ext_html,FRM_new_ext_html,FRM_new_read_only,FRM_edit_read_only,FRM_is_forbidden,FRM_status_rule,FRM_is_richText,FRM_is_attachment,FRM_hidden_by 		
 	Dim FRM_FK_select,FRM_FK_window,FRM_hidden_by_field 
 			sqlString=sqlString & condition & securitySQL 
-			
+			'response.write sqlString
 			executeQuery conn,movaRS,sqlString, 1, 1
 				FRM_field_id = movaRS("field_id")
 				FRM_object_id = movaRS("object_id")
@@ -122,6 +122,7 @@ end if
 				FRM_hidden_by_field= movaRS("hidden_by_field")
 				FRM_multiple_size = movaRS("multiple_size")
 				FRM_allow_suggestion = movaRS("allow_suggestion")
+				FRM_picklist_sql = movaRS("picklist_sql")
 	
 				
 %>
@@ -327,6 +328,12 @@ end if
   	  				</select>仅对选择输入项有效
 	  		</td>
 	  </tr>
+	   <tr><td class=cn_td09 align=right><span class="cn_font02">*</span>PICKLIST　扩展:</td>
+	  		<td><input class=cn_input03 type="text" style="width:100%" name="picklist_sql" value="<%=FRM_picklist_sql%>">
+	  			<br>此处为SQL 语句。用于输出下拉列表，目前只支持相同的value和text 如 : selectvalue / txt
+	  		</td>
+	  </tr>
+	  
 	  
 	  
 	  		<tr><td class=cn_td09 align=right>状态规则:</td>

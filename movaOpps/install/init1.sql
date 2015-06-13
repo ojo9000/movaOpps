@@ -94,6 +94,8 @@ insert into mova_function(mova_functionid,plugin_no,parent_id,category,categoryN
 GO
 insert into mova_function(mova_functionid,plugin_no,parent_id,category,categoryName,code,functionname,is_super,description,sortno,function_type,url,status,createdate,createuser,modifydate,modifyuser,is_pub) values (523,null,36,'system','系统管理','system_plugin','插件管理',null,null,25,'URL','/movaOpps/plugins/?1=1','T',null,null,null,null,'T')
 GO
+insert into mova_function(mova_functionid,plugin_no,parent_id,category,categoryName,code,functionname,is_super,description,sortno,function_type,url,status,createdate,createuser,modifydate,modifyuser,is_pub) values (601,null,36,'system','系统管理','pickSys','内置下拉列表',null,null,25,'URL','/movaOpps/core/system/picklist/listPicklist.asp?1=1','T',null,null,null,null,'T')
+GO
 SET IDENTITY_INSERT mova_function OFF 
 GO
 
@@ -110,12 +112,25 @@ insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,desc
 GO
 insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (5,'数字','shuzi','1','1','',null,1,' ','F',null,null,null,null,'T')
 GO
+insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (169,'数字','shuzi','0','0','',null,0,' ','F',null,null,null,null,'T')
+GO
 insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (6,'数字','shuzi','2','2','',null,2,' ','F',null,null,null,null,'T')
 GO
 insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (7,'数字','shuzi','3','3','',null,3,' ','F',null,null,null,null,'T')
 GO
 insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (8,'数字','shuzi','4','4','',null,4,' ','F',null,null,null,null,'T')
 GO
+insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (602,'数字','shuzi','5','5','',null,4,' ','F',null,null,null,null,'T')
+GO
+insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (603,'数字','shuzi','6','6','',null,4,' ','F',null,null,null,null,'T')
+GO
+insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (604,'数字','shuzi','7','7','',null,4,' ','F',null,null,null,null,'T')
+GO
+insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (605,'数字','shuzi','8','8','',null,4,' ','F',null,null,null,null,'T')
+GO
+insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (606,'数字','shuzi','9','9','',null,4,' ','F',null,null,null,null,'T')
+GO
+ 
 insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (9,'用户部门','department','IT','IT','',null,3397,' ','F',null,null,null,null,'T')
 GO
 insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (21,'电话功能键','phone_menu','0','0','',null,3727,' ','F',null,null,null,null,'T')
@@ -349,6 +364,8 @@ GO
 insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (166,'业务模型表','opp_table','MU_OPP19','MU_OPP19',null,null,4367,'T','F',CONVERT(DATETIME,'2012/9/9 9:42:00',120),'1',CONVERT(DATETIME,'2012/9/9 9:44:00',120),1,null)
 GO
 insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (167,'业务模型表','opp_table','MU_OPP20','MU_OPP20',null,null,4372,'T','F',CONVERT(DATETIME,'2012/9/9 9:43:00',120),'1',CONVERT(DATETIME,'2012/9/9 9:44:00',120),1,null)
+GO
+insert into mova_picklist(mova_picklistid,picklistname,code,selectvalue,txt,description,moduleid,sortno,is_memory,archive,createdate,createuser,modifydate,modifyuser,is_super) values (168,'数据类型','record_type','PICK_SQL','扩展下拉值','',null,3822,' ','F',null,null,null,null,'T')
 GO
 SET IDENTITY_INSERT mova_picklist OFF 
 GO

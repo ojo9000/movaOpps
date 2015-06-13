@@ -717,6 +717,7 @@ CREATE TABLE [dbo].[mu_mpl_search] (
 	[createuser] [int] NULL ,
 	[modifydate] [datetime] NULL ,
 	[modifyuser] [int] NULL ,
+	[search_no] [varchar] [50] NULL,
 	[auto_search] [varchar] (1) COLLATE Chinese_PRC_CI_AS NULL 
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
@@ -791,7 +792,7 @@ CREATE TABLE [dbo].[mu_object_field] (
 	[field_code] [varchar] (10) COLLATE Chinese_PRC_CI_AS NOT NULL ,
 	[field_name] [varchar] (20) COLLATE Chinese_PRC_CI_AS NULL ,
 	[field_type] [varchar] (20) COLLATE Chinese_PRC_CI_AS NOT NULL ,
-	[width] [int] NULL ,
+	[width] [varchar] (10) NULL ,
 	[high] [int] NULL ,
 	[is_forbidden] [char] (1) COLLATE Chinese_PRC_CI_AS NULL ,
 	[is_new] [char] (1) COLLATE Chinese_PRC_CI_AS NOT NULL ,
@@ -830,8 +831,9 @@ CREATE TABLE [dbo].[mu_object_field] (
 	[fk_select] [varchar](300) NULL,
 	[fk_window] [varchar](300) NULL,
 	[hidden_by_field] [varchar](200) NULL,
-	[multiple_size] [int] NULL default 0,
-	[allow_suggestion] [char](1) NULL default('F')
+	[multiple_size] [int] NULL DEFAULT ((0)),
+	[allow_suggestion] [char](1) NULL default('F'),
+	[picklist_sql] [varchar](1000) NULL
 	
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO

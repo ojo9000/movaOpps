@@ -14,7 +14,7 @@
 		str="";
 		
 		if (document.mainform.team_name.value==""){
-			str=str +  "公司名必须输入" + "\n";
+			str=str +  "组名必须输入" + "\n";
 		}
 		if (str!=""){
 			str="对不起，您的输入不正确!\n---------------------------------\n" + str;
@@ -25,8 +25,8 @@
 		}
 	}
 </script>
- <div class="cn_list_title">添加公司</div> 
-<div class="cn_list_title_right"><a href="addTeam.asp">添加公司</a> | <a href="listTeam.asp">公司列表</a></div>
+ <div class="cn_list_title">添加组</div> 
+<div class="cn_list_title_right"><a href="addTeam.asp">添加公司</a> | <a href="listTeam.asp">组列表</a></div>
 
 <DIV class=cn_col01>
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
@@ -35,7 +35,7 @@
     		<input type="hidden" name="object" value="mova_role">
      
                           <tr height="20"> 
-                            <td  class="cn_td09" ><font color=red>*</font>公司名称:</td>
+                            <td  class="cn_td09" ><font color=red>*</font>组名称:</td>
                             <td class="" ><input  class=cn_input03  name="team_name" type="text"  size="30" maxlength="20"> 
                             </td>
                           </tr>

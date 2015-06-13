@@ -23,10 +23,10 @@
 			str=str +  "密码必须输入或者密码输入错误" + "\n";
 		}
 		if (document.mainform.mova_roleid.value==""){
-			str=str + "必须一个角色" + "\n";
+			str=str + "必须选择一个角色" + "\n";
 		}
 		if (document.mainform.team_id.value==""){
-			str=str + "必须一个公司" + "\n";
+			str=str + "必须选择一个组" + "\n";
 		}
 		
 		return showInputError(str);
@@ -89,7 +89,7 @@
                           </tr>
                           <% if isAdministrator() then %>
                           <tr height="20"> 
-                            <td  class="cn_td09" > 默认公司:</td>
+                            <td  class="cn_td09" > 默认组:</td>
                             <td class="" >
                             <select name="team_id" >
                              <option value=""></option>

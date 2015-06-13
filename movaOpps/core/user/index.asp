@@ -100,7 +100,7 @@ FRM_team_id = movaRS("team_id")
                             </td>
                           </tr>
                           <tr height="20">
-                            <td  class="cn_td09" ><font color=red>*</font>默认公司:</td>
+                            <td  class="cn_td09" ><font color=red>*</font>默认组:</td>
                             <td class="" ><%=getOnefield("select team_name from mova_team where team_id=" &FRM_team_id) %>
                           
                           </tr>

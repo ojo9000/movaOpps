@@ -185,6 +185,7 @@ sub  getObjectPropertyArray(objectid)
 		objectPropertyArray(30)=movaRS1("depend_master")
 		objectPropertyArray(31)=movaRS1("template_field")
 		objectPropertyArray(32)=movaRS1("template_define")
+		
 		movaRS1.close
 	end if 
 end sub 
@@ -379,7 +380,7 @@ end Function
   
 
 '自定义字段数组
-Dim ObjectFieldArray(100,30)		
+Dim ObjectFieldArray(100,40)		
 Dim ObjectFieldArray_X,ObjectFieldArray_Y  '定义字段的数量_X及属性_Y的数量， 
 Dim curIndex_Property_readOnly		'需要动态确定的只读字段的位置。_X 
 ObjectFieldArray_X=100
@@ -388,7 +389,7 @@ ObjectFieldArray_Y=30
 dim curIndex_Property_NewReadOnly,curIndex_Property_value
 curIndex_Property_readOnly = 15		'只读属性的序号，需要根据实际情况修改
 curIndex_Property_NewReadOnly = 14		'新增时只读属性的序号，需要根据实际情况修改
-curIndex_Property_value = 26+1			'当前属性的值索引（数组最大值 + 1）
+curIndex_Property_value = 30+1			'当前属性的值索引（数组最大值 + 1）
 
 '自定义主表的字段数组
 Dim mastTableFieldArray(100,4)
@@ -487,7 +488,7 @@ Dim j
  
 Dim sqlObject
 	sqlObject="select *,isNull(field_name,'_') as fn from mu_object_field where archive='F' and is_forbidden='F' and object_id=" & objectId
-	
+	'response.write sqlObject
 	Dim securitySQLx ,orderBy,objectCondition,objectOrder
 	securitySQLx = " and owner='" & session("customerNo") & "'"
  			if  isNull(orderBy) or orderBy="" then 
@@ -558,6 +559,11 @@ dIM FRM_PK_select,FRM_PK_window
 				FRM_FK_select = rs("fk_select")
 				FRM_FK_window = rs("fk_window")
 				FRM_hidden_by_field = rs("hidden_by_field")
+				FRM_multiple_size = rs("multiple_size")
+				FRM_allow_suggestion = rs("allow_suggestion")
+				if FRM_multiple_size&"" ="" then  FRM_multiple_size = "0"
+				FRM_picklist_sql = rs("picklist_sql")
+				
 			 
 				ObjectFieldArray(i,1)=FRM_field_code			'字段名
 				ObjectFieldArray(i,2)=FRM_field_name			'字段名称
@@ -588,8 +594,14 @@ dIM FRM_PK_select,FRM_PK_window
 				ObjectFieldArray(i,25)=FRM_FK_window	  '外键查询url
 				ObjectFieldArray(i,26)=FRM_hidden_by_field '根据字段决定是否隐藏该字段
 				
+				ObjectFieldArray(i,27)=FRM_multiple_size '非0 则表示为下拉框可以复选。且数值为下拉框高度
+				ObjectFieldArray(i,28)=FRM_allow_suggestion '如果为 T 则表示该字段可以联想录入
+				ObjectFieldArray(i,29)=FRM_picklist_sql 'PICLIST SQL语句
+		 
+				 
+				
 				i=i+1
-				rs.Movenext 
+				rs.moveNext 
 			Loop
 			rs.close
 	end sub
@@ -655,11 +667,19 @@ end function
 	end function 
 
 	'获取用户自定义下拉列表
-	function getItemList(itemCode,selValue)
-	Dim   itemSql
-			itemSql = "select txt as selectvalue,txt from mu_item_list where owner='" & session("customerNo") &"' and item_code='" & itemCode &"' and archive='F' order by sort_no"
- 		' response.write itemSql
-		 getItemList = cachePicklist(itemSql,selValue)
+	function getItemList(itemCode,extSQL,selValue)
+			Dim   itemSql
+			if itemCode = "PICK_SQL" then 
+				itemSql = extSQL
+			else
+				itemSql = "select txt as selectvalue,txt from mu_item_list where owner='" & session("customerNo") &"' and item_code='" & itemCode &"' and archive='F' order by sort_no"
+			end if 
+			if itemSQL<>"" then 
+ 				response.write itemSql
+				 getItemList = cachePicklist(itemSql,selValue)
+			else
+					getItemList=""
+			end if 
 	end function
 	
 	

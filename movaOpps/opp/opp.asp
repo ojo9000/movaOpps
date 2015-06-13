@@ -131,7 +131,7 @@ dim is_owner_allow_edit
 is_owner_allow_edit=true
 if isNew then 
 	getObjectField FRM_objectId,"NEW"		'获取字段属性
-	'debugObjectField
+'	debugObjectField
 	'页面显示时执行的js 
 	FRM_pre_js = FRM_pre_js & vbcrlf & FRM_pre_new_js  & "" & vbcrlf
 	FRM_submit_js = FRM_new_submit_js  & "" & vbcrlf  
@@ -202,34 +202,10 @@ else
 			response.end
 		end if
 		
-	''同创代码
+	''中医院代码
 	
-	
-	
-	if ucase(FRM_table_name)="MU_CUSTOMER" then 
-		session("isSLR") =true
-		session("isZRR") =true
-		session("locked")=false	
-		session("isRW")= false
-	end if 
-	
-	if ucase(FRM_table_name)="MU_OPP20" then 
-		session("isSLR") =false
-		session("isZRR") =false
-		session("locked")=false	
-		session("isRW")= true
-	 if cstr(session("userid"))=cstr(movaRS("d1")) then 
-			session("isSLR") = true
-	 end if 
-	 if cstr(session("userid"))=cstr(movaRS("d2")) then 
-			 session("isZRR") = true
-	 end if  
-		if (getOnefield("select txt from mu_item_list where item_code='M00_I0051' and txt='"&movaRS("v1")&"'")<>"") or  movaRS("v1")="已完成" then 
-			session("locked") = true
-		else
-			
-		end if 
-	END IF 
+	 
+	 
 	
 
 		
@@ -695,10 +671,15 @@ if FRM_is_single<>"T" and FRM_all_show_master="T"  then
 								else
 								%><textarea  name="<%=FormName%>"  id="<%=FormName%>"  <%=widthFieldHTML%> rows="<%=ObjectFieldArray(k,9)%>" ><%=curValue%></textarea><%
 								end if 
-						else%>
-								 <select id="<%=FormName%>"  name="<%=FormName%>">
-									<option value=""></option>
-									<%=getItemList(ObjectFieldArray(k,3),curValue)%>
+						else
+							'是下拉框
+							Dim fMultipleSize
+							fMultipleSize = "" 
+							if cint(ObjectFieldArray(k,27)&"")>1 then fMultipleSize  = " size='"&ObjectFieldArray(k,27)&"' multiple='multiple' "
+							%>  
+							<select id="<%=FormName%>"  <%=fMultipleSize%> name="<%=FormName%>">
+									<%if cint(ObjectFieldArray(k,27)&"")<2 then %><option value=""></option> <%end if %>
+									<%=getItemList(ObjectFieldArray(k,3),ObjectFieldArray(k,29),curValue)%>
 								</select>
 							<%end if %>
 					<%end if %>
@@ -762,7 +743,7 @@ if FRM_is_single<>"T" and FRM_all_show_master="T"  then
 	
 	'输出Team的
 	if session("roleScope")="G" then %>
-		<TD class=cn_td09 align=right><span class='require'>公司:</TD>
+		<TD class=cn_td09 align=right><span class='require'>组:</TD>
     <TD class=cn_td10 align="left" >
    	<select name="team">
    		<option value=""></option>
@@ -939,10 +920,10 @@ Dim i
  	 		<%end if %>
  	 		
  	 		
-<%	if not isNew  and ucase(FRM_table_name) = ucase("mu_opp20")  then   
+<%	if not isNew  and ucase(FRM_table_name) = ucase("mu_opp1")  then   
 	'response.write ObjectFieldArray(getIndex_ObjectFieldArray("VK",1),curIndex_Property_value) 
- 	 		response.write "<li><a href='/movaOpps/userDefine/trackOpp.asp?no=" & FRM_object_no &"&v0="&ObjectFieldArray(getIndex_ObjectFieldArray("V0",1),curIndex_Property_value)&"&vk="&ObjectFieldArray(getIndex_ObjectFieldArray("VK",1),curIndex_Property_value) &"&status=" & ObjectFieldArray(getIndex_ObjectFieldArray("V1",1),curIndex_Property_value) &"'>任务跟踪</a></li>"
- 	 		response.write "<li><a href='/movaOpps/opp/mplTab.asp?object_id=1&no=job_room&param1="& ObjectFieldArray(getIndex_ObjectFieldArray("V5",1),curIndex_Property_value)&"'>相同房间任务</a></li>"
+ 	 		response.write "<li><a href='/movaOpps/userDefine/trackOpp.asp?no=" & FRM_object_no &"&status=" & ObjectFieldArray(getIndex_ObjectFieldArray("VD",1),curIndex_Property_value) &"'>进展备忘</a></li>"
+ 	 		response.write "<li><a href='/movaOpps/userDefine/pingjiaOpp.asp?no=" & FRM_object_no &"&status=" & ObjectFieldArray(getIndex_ObjectFieldArray("VD",1),curIndex_Property_value) &"'>评分</a></li>"
  	 		end if %>
  	 		<%
 			if not isNew and chkAccount(getObjectOppSec(FRM_objectId,"DY_LOG")) then  
@@ -990,7 +971,7 @@ function chk(form){
 		str="";
 		<%=	requireStr%>
 		if (form.team.value==""){
-			str = str + "公司必须输入！"
+			str = str + "组必须输入！"
 		}
 		return showInputError(str);
 }

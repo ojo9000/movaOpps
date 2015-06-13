@@ -1,5 +1,15 @@
 <%
 
+ 'mplObjectId  查询模型id
+ 'mplNo        自定义查询编码
+ 'mplId        自定义查询id
+ 'param1       自定义查询URL参数1
+ 'param2       自定义查询URL参数2
+ 'mplTitle     查询标题
+ 'mplRightTitle 查询右侧标题
+ 'mplIsStart 首次查询，必须为0 
+ 'forceSingle     是否强制单表查询
+ 'showWindow     是否链接窗口打开
  
 function  mplSearchView(mplObjectId,mplNo,mplId,param1,param2,mplTitle,mplRightTitle,mplIsStart,forceSingle,showWindow)
 Dim OutListString
@@ -162,7 +172,7 @@ OutListString = OutListString & "		  	<tr> "
 OutListString = OutListString & "				<td>"
 OutListString = OutListString & "							<select name="& chr(34)  & FRM_field_code & chr(34) & ">"
 OutListString = OutListString & "								<option value="& chr(34)& chr(34) & " ></option>"
-OutListString = OutListString & "								"& chr(34)  &getItemList(ObjectFieldArray(itemK,3),"") 
+OutListString = OutListString & "								"& chr(34)  &getItemList(ObjectFieldArray(itemK,3),ObjectFieldArray(itemK,29),"") 
 OutListString = OutListString & "							</select></td>" 					
 		 
 			else 

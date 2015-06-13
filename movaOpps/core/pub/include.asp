@@ -591,7 +591,7 @@ Function Checkbox1(str,formatStr,splitStr,splitValue,valuelist) 'Éú³ÉcheckboxµÄÁ
 			else 
 				sss=split(valuelist,",")
 				For Each f In sss
-					if f=isid then 
+					if trim(f)=trim(isid) then 
 						j=1
 					end if 
 				Next
@@ -659,7 +659,7 @@ end function
 				exit do 
 			end if
 			if isNull(valuelist) then
-				isvalue="aaaaa"
+				isvalue="##**^^"
 			end if 
 			isvalue=cstr(rs("txt"))
 			if isNull(isvalue) then
@@ -671,19 +671,19 @@ end function
 			isvalue=trim(isvalue)
 			valuelist=trim(valuelist)
 			isid=cstr(rs("selectvalue"))
+		 
 			sss=split(valuelist,",")
 			For Each f In sss
-				if f=isid then 
+				 
+				if trim(f)=trim(isid) then 
 					p_j=1
 					p_k=1
 				end if 
 			Next
 			if p_j=1 then
-					tempReturn = tempReturn & "<option value="& chr(34) & isid & chr(34) & " selected>" & isvalue & "</option>" & chr(13)
-				
-	 
+				tempReturn = tempReturn & "<option value="& chr(34) & isid & chr(34) & " selected>" & isvalue & "</option>" & chr(13)
 			else 
-				tempReturn = tempReturn & "<option value="& chr(34) & isid & chr(34) & "  >" & isvalue & "</option>" & chr(13)
+				tempReturn = tempReturn & "<option value="& chr(34) & isid & chr(34) & " >" & isvalue & "</option>" & chr(13)
 			end if 
 			rs.movenext
 		loop
@@ -696,91 +696,7 @@ end function
 		picklist = tempReturn
 	End Function
 	 
-	
-	'¶þ¼¶ÏÂÀ­ÌõÏÔÊ¾
-	function exportsmallType (funname)
-		%>
-			function <%=funname%>(obja,objb){
-			objb.length=0;	
-		<%
-			if session("seriesid")="" then
-				sql="select  bigtypeid from bigType where seriesid=" & getOneField("select max(seriesid) from series")
-			else
-				sql="select  bigtypeid from bigType where seriesid=" & session("seriesid")
-			end if 
-			
-			'response.write sql
-			'response.end
-			set rs=conn.execute(sql)
-			while not(rs.eof or rs.bof)
-		%>
-				if (obja.options[obja.selectedIndex].value=="<%=rs("bigtypeid")%>") {
-					var aOption=Option("","");
-					objb.options[0] = aOption;
-		<%			
-				sql="select smalltypeid,namecn,nameen,namebig5 from smallType  where bigTypeid=" & rs("bigtypeid") & " order by sortno"
-				'response.write sql
-				set rs2=conn.execute(sql)
-				i=1
-				while not(rs2.eof or rs2.bof)
-		%>
-					var aOption = Option("<%=rs2("name"&getLang)%>", "<%=rs2("smalltypeid")%>");
-					objb.options[<%=i%>] = aOption;
-		<%			
-					i=i+1
-					rs2.movenext
-				wend 
-		%>
-				
-				}
-		<%
-				rs.movenext
-			wend
-		%>
-			}
-		<%
-	end function
-	
-	
-	'ÏµÁÐ¸ü¸Äºó¶þ¼¶²Ëµ¥ÏÔÊ¾
-	function exportSeries (funname)
-		%>
-			function <%=funname%>(obja,objb){
-			objb.length=0;	
-		<%
-			sql="select  Seriesid from series order by sortno"
-			'response.write sql
-			'response.end
-			set rs=conn.execute(sql)
-			while not(rs.eof or rs.bof)
-		%>
-				if (obja.options[obja.selectedIndex].value=="<%=rs("seriesid")%>") {
-					var aOption=Option("","");
-					objb.options[0] = aOption;
-		<%			
-				sql="select bigtypeid,namecn,nameen,namebig5 from bigType  where seriesid=" & rs("Seriesid") & " order by sortno"
-				'response.write sql
-				set rs2=conn.execute(sql)
-				i=1
-				while not(rs2.eof or rs2.bof)
-		%>
-					var aOption = Option("<%=rs2("name"&getLang)%>", "<%=rs2("bigtypeid")%>");
-					objb.options[<%=i%>] = aOption;
-		<%			
-					i=i+1
-					rs2.movenext
-				wend 
-		%>
-				
-				}
-		<%
-				rs.movenext
-			wend
-		%>
-			}
-		<%
-	end function
-
+	 
 '*  ¹¦ÄÜÃèÊö:				¼ÇÂ¼·ÖÒ³
 Dim dFirst
 Dim dPrev

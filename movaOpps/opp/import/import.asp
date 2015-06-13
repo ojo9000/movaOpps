@@ -45,7 +45,7 @@ end if
 			str=str +  "业务模型必须输入" + "\n";
 		}
 		if (document.mainform.team.value==""){
-			str=str +  "默认公司必须输入" + "\n";
+			str=str +  "默认组必须输入" + "\n";
 		}
 		if (document.mainform.team.value==""){
 			str=str +  "必须选择一个导入文件。" + "\n";
@@ -98,7 +98,7 @@ end if
     </td>
   </tr>
    <tr height="20">
-    <td  class="cn_td09" ><font color=red>*</font>默认公司:</td>
+    <td  class="cn_td09" ><font color=red>*</font>默认组:</td>
     <td class="" >
     		<select name="team">
    										<option value=""></option>
